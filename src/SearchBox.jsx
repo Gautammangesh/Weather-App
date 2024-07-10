@@ -13,7 +13,7 @@ export default function SearchBox({ updateInfo }) {
   let getWeatherInfo = async () => {
     try {
       let response = await fetch(
-        `${API_URL}?q=${city}&appid=${API_KEY}&units=metric`
+        ${API_URL}?q=${city}&appid=${API_KEY}&units=metric
       );
       let jsonResponse = await response.json();
       let result = {
@@ -43,6 +43,7 @@ export default function SearchBox({ updateInfo }) {
       setCity("");
       let newInfo = await getWeatherInfo();
       updateInfo(newInfo);
+      setError(false)
     } catch (err) {
       setError(true);
     }
